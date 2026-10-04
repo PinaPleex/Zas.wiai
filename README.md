@@ -4,3 +4,5 @@ Zadanie 1 i 2
 https://pinapleex.github.io/Zas.wiai/Zadanie%201/index.html
 Zadanie 3
 https://pinapleex.github.io/Zas.wiai/Zadanie%203/index.html
+Zadanie 4
+https://pinapleex.github.io/Zas.wiai/Zadanie%204/index.html

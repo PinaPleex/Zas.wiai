@@ -7,4 +7,4 @@ https://pinapleex.github.io/Zas.wiai/Zadanie%203/index.html
 Zadanie 4
 https://pinapleex.github.io/Zas.wiai/Zadanie%204/index.html
 Wszystkie zadania
-https://pinapleex.github.io/Zas.wiai/allzad%205/index.html
+https://pinapleex.github.io/Zas.wiai/allzad/index.html

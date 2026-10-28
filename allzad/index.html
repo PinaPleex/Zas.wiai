@@ -9,6 +9,8 @@
     <style>
         body {
             background-color: #d3d3d3;
+            font-size: 20px;
+            line-height: 1.6;
         }
 
         .linie1 {
@@ -56,7 +58,7 @@
         }
     </style>
 </head>
-<body>
+<body id="poczatek">
 <nav class="sbornik" aria-label="Nawigacja strony">
     <ul>
         <li><a href="poczta_chimitow.html">Link do poczty</a></li>
@@ -69,7 +71,7 @@
     </ul>
 </nav>
 
-<main id="poczatek">
+<main>
 <p align="right"><font color="blue" size="7" face="Arial">Władysław</font></p>
 <p align="right"><font color="blue" size="6" face="Arial">Władysław</font></p>
 <p align="right"><font color="blue" size="5" face="Arial">Władysław</font></p>
@@ -101,7 +103,7 @@
 <p align="left"><font color="green" size="5" face="Times New Roman">x*x=x<sup>2</sup></font></p>
 
 <!-- Autor: Władysław Chimitow, Szkoła: ZSE, Klasa: 2G -->
-<h1 id="srodek">Dowcipy o informatyku</h1>
+<h1>Dowcipy o informatyku</h1>
 <fieldset>
     <legend>Dowcip o jajkach</legend>
     <p>Żona do męża informatyka:<br>
@@ -134,12 +136,12 @@
 </fieldset>
 <hr class="linie3">
 
-<nav class="sbornik" aria-label="Nawigacja środkowa">
+<nav class="sbornik" id="srodek" aria-label="Nawigacja środkowa">
     <ul>
         <li><a href="poczta_chimitow.html">Link do poczty</a></li>
         <li><a href="plik_chimitow.html">Link do ściągania pliku</a></li>
-        <li><a href="#poczatek">Link początek tekstu</a></li>
-        <li><a href="#koniec">Link do końca tekstu</a></li>
+        <li><a href="#poczatek">Początek tekstu</a></li>
+        <li><a href="#koniec">Koniec tekstu</a></li>
         <li><a href="tabela_chimitow.html">Link do strony zawierającej tabelę</a></li>
         <li><a href="formularz_chimitow.html">Link do strony zawierającej formularz</a></li>
     </ul>
@@ -176,11 +178,23 @@
     <ul>
         <li><a href="poczta_chimitow.html">Link do poczty</a></li>
         <li><a href="plik_chimitow.html">Link do ściągania pliku</a></li>
-        <li><a href="#poczatek">Link początek tekstu</a></li>
-        <li><a href="#srodek">Link do środka tekstu</a></li>
+        <li><a href="#poczatek">Początek tekstu</a></li>
+        <li><a href="#srodek">Środek tekstu</a></li>
         <li><a href="tabela_chimitow.html">Link do strony zawierającej tabelę</a></li>
         <li><a href="formularz_chimitow.html">Link do strony zawierającej formularz</a></li>
     </ul>
 </nav>
+<script>
+    document.querySelectorAll('a[href="#srodek"]').forEach((link) => {
+        link.addEventListener("click", (event) => {
+            event.preventDefault();
+            history.pushState(null, "", "#srodek");
+            document.getElementById("srodek").scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+        });
+    });
+</script>
 </body>
 </html>

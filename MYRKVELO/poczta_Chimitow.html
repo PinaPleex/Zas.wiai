@@ -1,0 +1,53 @@
+<!-- Imię i nazwisko: Władysław Chimitow; data wykonania: 2026-11-09; firma: MYRKVELO. -->
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Władysław Chimitow">
+  <title>MYRKVELO — Kontakt pocztowy | Wykonał Chimitow</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="page-header">
+    <a class="small-brand" href="index.html">MYRKVELO</a>
+    <h1>Kontakt z <span class="heading-accent">MYRKVELO</span></h1>
+  </header>
+  <nav class="site-nav" aria-label="Nawigacja główna">
+    <a href="index.html">Strona główna</a>
+    <a href="menu.html">Menu</a>
+    <a href="formularz_Chimitow.html">Formularz</a>
+    <a href="tabela_Chimitow.html">Tabela produktów</a>
+    <a href="poczta_Chimitow.html" aria-current="page">Poczta</a>
+  </nav>
+  <main class="mail-main">
+    <form id="mail-form" class="mail-form">
+      <div class="field">
+        <label for="to">Do</label>
+        <input id="to" name="to" type="email" value="kontakt@myrkvelo.pl" required>
+      </div>
+      <div class="field">
+        <label for="subject">Temat</label>
+        <input id="subject" name="subject" type="text" placeholder="Temat wiadomości" required>
+      </div>
+      <div class="field">
+        <label for="mail-message">Wiadomość</label>
+        <textarea id="mail-message" name="message" rows="8" placeholder="Napisz wiadomość..." required></textarea>
+      </div>
+      <p class="form-note">Wiadomość zostanie przekazana do domyślnego programu pocztowego. Jej wysłanie zatwierdzisz samodzielnie.</p>
+      <button class="button button-primary" type="submit">Wyślij <span aria-hidden="true">→</span></button>
+    </form>
+  </main>
+  <footer class="site-footer"><p>MYRKVELO — Hurtownia Rowerów i Części Rowerowych</p><p>© 2026 Władysław Chimitow</p></footer>
+  <script>
+    document.querySelector('#mail-form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const fields = new FormData(event.currentTarget);
+      const recipient = encodeURIComponent(fields.get('to'));
+      const subject = encodeURIComponent(fields.get('subject'));
+      const body = encodeURIComponent(fields.get('message'));
+      window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+    });
+  </script>
+</body>
+</html>

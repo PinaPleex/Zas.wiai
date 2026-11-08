@@ -1,0 +1,104 @@
+<!-- Imię i nazwisko: Władysław Chimitow; data wykonania: 2026-11-09; firma: MYRKVELO. -->
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Władysław Chimitow">
+  <title>MYRKVELO — Formularz kontaktowy | Wykonał Chimitow</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="page-header">
+    <a class="small-brand" href="index.html">MYRKVELO</a>
+    <h1>Formularz kontaktowy <span class="heading-accent">— MYRKVELO</span></h1>
+  </header>
+  <nav class="site-nav" aria-label="Nawigacja główna">
+    <a href="index.html">Strona główna</a>
+    <a href="menu.html">Menu</a>
+    <a href="formularz_Chimitow.html" aria-current="page">Formularz</a>
+    <a href="tabela_Chimitow.html">Tabela produktów</a>
+    <a href="poczta_Chimitow.html">Poczta</a>
+  </nav>
+  <main class="form-main">
+    <form id="contact-form" class="contact-form">
+      <div class="form-grid">
+        <div class="field">
+          <label for="name">Imię i nazwisko <span aria-hidden="true">*</span></label>
+          <input id="name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="company">Nazwa firmy</label>
+          <input id="company" name="company" type="text" autocomplete="organization">
+        </div>
+        <div class="field">
+          <label for="email">Adres e-mail <span aria-hidden="true">*</span></label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="phone">Numer telefonu</label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel">
+        </div>
+        <div class="field">
+          <label for="enquiry">Rodzaj zapytania <span aria-hidden="true">*</span></label>
+          <select id="enquiry" name="enquiry" required>
+            <option value="" selected disabled>Wybierz temat</option>
+            <option>Zapytanie o ofertę</option>
+            <option>Zamówienie hurtowe</option>
+            <option>Pytanie o produkt</option>
+            <option>Współpraca</option>
+            <option>Inne</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="category">Interesująca kategoria produktów <span aria-hidden="true">*</span></label>
+          <select id="category" name="category" required>
+            <option value="" selected disabled>Wybierz kategorię</option>
+            <option>Rowery górskie</option>
+            <option>Rowery miejskie</option>
+            <option>Rowery szosowe</option>
+            <option>Rowery elektryczne</option>
+            <option>Części rowerowe</option>
+            <option>Akcesoria rowerowe</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">Treść wiadomości <span aria-hidden="true">*</span></label>
+          <textarea id="message" name="message" rows="6" required></textarea>
+        </div>
+      </div>
+      <label class="consent-field" for="consent">
+        <input id="consent" name="consent" type="checkbox" required>
+        <span>Wyrażam zgodę na przetwarzanie danych osobowych w celu obsługi mojego zapytania. <span aria-hidden="true">*</span></span>
+      </label>
+      <p class="form-note">Po wybraniu „Wyślij” otworzy się domyślny program pocztowy z przygotowaną wiadomością. Wysłanie wymaga zatwierdzenia w tym programie.</p>
+      <div class="form-actions">
+        <button class="button button-primary" type="submit">Wyślij <span aria-hidden="true">→</span></button>
+        <button class="button button-secondary" type="reset">Wyczyść</button>
+      </div>
+      <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </main>
+  <footer class="site-footer"><p>MYRKVELO — Hurtownia Rowerów i Części Rowerowych</p><p>© 2026 Władysław Chimitow</p></footer>
+  <script>
+    const contactForm = document.querySelector('#contact-form');
+    contactForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const fields = new FormData(contactForm);
+      const body = [
+        `Imię i nazwisko: ${fields.get('name')}`,
+        `Firma: ${fields.get('company') || 'Nie podano'}`,
+        `E-mail: ${fields.get('email')}`,
+        `Telefon: ${fields.get('phone') || 'Nie podano'}`,
+        `Rodzaj zapytania: ${fields.get('enquiry')}`,
+        `Kategoria: ${fields.get('category')}`,
+        '',
+        `Wiadomość: ${fields.get('message')}`
+      ].join('\n');
+      const subject = `Zapytanie MYRKVELO — ${fields.get('enquiry')}`;
+      window.location.href = `mailto:kontakt@myrkvelo.pl?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      document.querySelector('#form-status').textContent = 'Wiadomość przygotowana. Zatwierdź jej wysłanie w swoim programie pocztowym.';
+    });
+  </script>
+</body>
+</html>
